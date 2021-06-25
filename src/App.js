@@ -9,7 +9,7 @@ const App = () => {
 
   console.log(isWalletConnected);
 
-  // checks if there is a wallet already
+  // check if there is a wallet already
   const isWalletExists = () => {
     if (window.ethereum) {
       return true;
@@ -17,6 +17,8 @@ const App = () => {
       return false;
     }
   };
+
+  console.log(isWalletExists());
 
   const ethEnabled = async () => {
     //asks the user if he/she wants to connect to it. popup UI request to connect your dApp to MetaMask

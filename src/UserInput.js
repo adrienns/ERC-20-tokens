@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./UserInput.css";
 
-const UserInput = ({ handleSubmit }) => {
+const UserInput = ({ handleSubmit, setTransactionModal }) => {
   const [tokenAddressInput, setTokenAddressInput] = useState(
     "0x2A65D41dbC6E8925bD9253abfAdaFab98eA53E34"
   );
@@ -12,8 +12,8 @@ const UserInput = ({ handleSubmit }) => {
   const [decimalsInput, setDecimalsInput] = useState(18);
   const [amountInput, setAmountInput] = useState(100);
 
-  const closeTansactionModal = ({ setTansactionModal }) => {
-    setTansactionModal(false);
+  const closeTansactionModal = () => {
+    setTransactionModal(false);
   };
 
   const onSubmit = (e) => {

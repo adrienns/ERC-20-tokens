@@ -4,7 +4,7 @@ import UserInput from "./UserInput";
 const TransactionModal = ({
   isTransactionModalOpen,
   handleSubmit,
-  setTansactionModal,
+  setTransactionModal,
 }) => {
   return (
     <React.Fragment>
@@ -12,7 +12,7 @@ const TransactionModal = ({
         <div className="main-container">
           <UserInput
             handleSubmit={handleSubmit}
-            setTansactionModal={setTansactionModal}
+            setTransactionModal={setTransactionModal}
           />
         </div>
       ) : null}
