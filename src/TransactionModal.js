@@ -1,12 +1,19 @@
 import React from "react";
 import UserInput from "./UserInput";
 
-const TransactionModal = ({ setIsOpen, isOpen, handleSubmit }) => {
+const TransactionModal = ({
+  isTransactionModalOpen,
+  handleSubmit,
+  setTansactionModal,
+}) => {
   return (
     <React.Fragment>
-      {isOpen ? (
+      {isTransactionModalOpen ? (
         <div className="main-container">
-          <UserInput setIsOpen={setIsOpen} handleSubmit={handleSubmit} />
+          <UserInput
+            handleSubmit={handleSubmit}
+            setTansactionModal={setTansactionModal}
+          />
         </div>
       ) : null}
     </React.Fragment>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./UserInput.css";
 
-const UserInput = ({ setIsOpen, handleSubmit }) => {
+const UserInput = ({ handleSubmit }) => {
   const [tokenAddressInput, setTokenAddressInput] = useState(
     "0x2A65D41dbC6E8925bD9253abfAdaFab98eA53E34"
   );
@@ -12,8 +12,8 @@ const UserInput = ({ setIsOpen, handleSubmit }) => {
   const [decimalsInput, setDecimalsInput] = useState(18);
   const [amountInput, setAmountInput] = useState(100);
 
-  const closeModal = () => {
-    setIsOpen(false);
+  const closeTansactionModal = ({ setTansactionModal }) => {
+    setTansactionModal(false);
   };
 
   const onSubmit = (e) => {
@@ -23,9 +23,9 @@ const UserInput = ({ setIsOpen, handleSubmit }) => {
 
   return (
     <form className="modal-container" onSubmit={onSubmit}>
-      <span onClick={closeModal} className="close-btn">
-        X
-      </span>
+      <div onClick={closeTansactionModal}>
+        <span className="close-btn">X</span>
+      </div>
       <div className="app-name"> Send ERC20 Token Balance</div>
       <div className="input-element">
         <label className="label">Token Address </label>
