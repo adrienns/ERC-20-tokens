@@ -18,17 +18,13 @@ const App = () => {
     }
   };
 
-  console.log(isWalletExists());
-
   const ethEnabled = async () => {
-    //asks the user if he/she wants to connect to it. popup UI request to connect your dApp to MetaMask
     if (isWalletExists()) {
       try {
         const res = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
         window.web3 = new Web3(window.ethereum);
-        console.log(res);
         setWalletConnected(true);
       } catch (err) {
         console.log(err);

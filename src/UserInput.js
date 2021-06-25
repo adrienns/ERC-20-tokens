@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import "./UserInput.css";
 
 const UserInput = ({ handleSubmit, setTransactionModal }) => {
-  const [tokenAddressInput, setTokenAddressInput] = useState(
-    "0x2A65D41dbC6E8925bD9253abfAdaFab98eA53E34"
-  );
-  const [toAddressInput, setToAddressInput] = useState(
-    "0x8Df70546681657D6FFE227aB51662e5b6e831B7A"
-  );
-  // const [fromAddress, setFromAddress] = useState("");
+  const [tokenAddressInput, setTokenAddressInput] = useState("");
+  const [toAddressInput, setToAddressInput] = useState("");
+
   const [decimalsInput, setDecimalsInput] = useState(18);
   const [amountInput, setAmountInput] = useState(100);
 
