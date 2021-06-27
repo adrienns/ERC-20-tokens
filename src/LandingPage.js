@@ -7,17 +7,17 @@ const LandingPage = ({
   setWalletConnected,
   handleSubmit,
   ethEnabled,
-  isWalletExists,
+  doesWalletExists,
 }) => {
-  const handleConnectWallet = async () => {
-    await ethEnabled();
+  const handleConnectWallet = () => {
+    ethEnabled();
   };
 
   return (
     <div className="landing-page-container">
       <h2 className="connect-wallet-text">Hi there!</h2>{" "}
       <h2> Manage your ERC-20 Tokens here!</h2>
-      {!isWalletExists() ? (
+      {!doesWalletExists() ? (
         <div>
           You don't have a wallet yet installed, you can install your MetaMask
           wallet <a href="https://metamask.io/">here</a>.

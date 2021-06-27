@@ -5,8 +5,16 @@ const UserInput = ({ handleSubmit, setTransactionModal }) => {
   const [tokenAddressInput, setTokenAddressInput] = useState("");
   const [toAddressInput, setToAddressInput] = useState("");
 
-  const [decimalsInput, setDecimalsInput] = useState(18);
-  const [amountInput, setAmountInput] = useState(100);
+  // const [tokenAddressInput, setTokenAddressInput] = useState(
+  //   "0x2A65D41dbC6E8925bD9253abfAdaFab98eA53E34"
+  // );
+  // const [toAddressInput, setToAddressInput] = useState(
+  //   "0x8Df70546681657D6FFE227aB51662e5b6e831B7A"
+  // );
+
+  const [decimalsInput, setDecimalsInput] = useState("");
+  //decimals 18
+  const [amountInput, setAmountInput] = useState("");
 
   const closeTansactionModal = () => {
     setTransactionModal(false);
@@ -26,6 +34,7 @@ const UserInput = ({ handleSubmit, setTransactionModal }) => {
       <div className="input-element">
         <label className="label">Token Address </label>
         <input
+          required
           value={tokenAddressInput}
           className="input"
           type="text"
@@ -35,6 +44,7 @@ const UserInput = ({ handleSubmit, setTransactionModal }) => {
       <div className="input-element">
         <label className="label">Recipients Address </label>
         <input
+          required
           value={toAddressInput}
           className="input"
           type="text"
@@ -45,6 +55,7 @@ const UserInput = ({ handleSubmit, setTransactionModal }) => {
       <div className="input-element">
         <label className="label">Decimals </label>
         <input
+          required
           value={decimalsInput}
           className="input"
           type="text"
@@ -55,6 +66,7 @@ const UserInput = ({ handleSubmit, setTransactionModal }) => {
       <div className="input-element">
         <label className="label">Amount </label>
         <input
+          required
           className="input"
           type="text"
           value={amountInput}

@@ -8,7 +8,7 @@ const App = () => {
   const [isWalletConnected, setWalletConnected] = useState(false);
 
   // check if there is a wallet already
-  const isWalletExists = () => {
+  const doesWalletExists = () => {
     if (window.ethereum) {
       return true;
     } else {
@@ -17,11 +17,14 @@ const App = () => {
   };
 
   const ethEnabled = async () => {
-    if (isWalletExists()) {
+    if (doesWalletExists()) {
       try {
+        // connect to user's MetaMask account, pop-up UI that
+        // asks the user’s permission to connect the dApp to MetaMask
         const res = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+        // create a window.web3 object with our own version of web3
         window.web3 = new Web3(window.ethereum);
         setWalletConnected(true);
       } catch (err) {
@@ -31,13 +34,11 @@ const App = () => {
   };
 
   const getBalance = async (tokenAddressInput, fromAddress) => {
-    let contract_balance = new window.web3.eth.Contract(
+    let contractBalance = new window.web3.eth.Contract(
       MIN_ABI_CHECK_BALANCE,
       tokenAddressInput
     );
-    const balance = await contract_balance.methods
-      .balanceOf(fromAddress)
-      .call();
+    const balance = await contractBalance.methods.balanceOf(fromAddress).call();
     return balance;
   };
 
@@ -47,11 +48,14 @@ const App = () => {
     toAddressInput,
     tokenAddressInput
   ) => {
+    //get wallet address
     const accounts = await window.web3.eth.getAccounts();
     let fromAddress = accounts[0];
+    //convert the value into a BN.js instance
     const decimals = window.web3.utils.toBN(parseInt(decimalsInput));
     const amount = window.web3.utils.toBN(parseInt(amountInput));
 
+    // value = amount * 10 ^ decimals
     const value = amount.mul(window.web3.utils.toBN(10).pow(decimals));
 
     const balance = await getBalance(tokenAddressInput, fromAddress);
@@ -59,14 +63,14 @@ const App = () => {
 
     // compare amount with balance
     if (amount.gt(balanceBN)) {
-      alert("You don't have enough ETH  in your wallet to send");
+      alert("You don't have enough ETH in your wallet to send");
     } else {
-      const contract = new window.web3.eth.Contract(
+      const contractTransfer = new window.web3.eth.Contract(
         MIN_ABI_TRANSFER,
         tokenAddressInput
       );
 
-      contract.methods
+      contractTransfer.methods
         .transfer(toAddressInput, value)
         .send({ from: fromAddress });
     }
@@ -75,7 +79,7 @@ const App = () => {
   return (
     <div className="app">
       <LandingPage
-        isWalletExists={isWalletExists}
+        doesWalletExists={doesWalletExists}
         handleSubmit={handleSubmit}
         isWalletConnected={isWalletConnected}
         setWalletConnected={setWalletConnected}
