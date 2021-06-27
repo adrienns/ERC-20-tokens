@@ -7,8 +7,6 @@ import { MIN_ABI_TRANSFER, MIN_ABI_CHECK_BALANCE } from "./constants";
 const App = () => {
   const [isWalletConnected, setWalletConnected] = useState(false);
 
-  console.log(isWalletConnected);
-
   // check if there is a wallet already
   const isWalletExists = () => {
     if (window.ethereum) {
