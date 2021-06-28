@@ -19,7 +19,7 @@ const App = () => {
   const ethEnabled = async () => {
     if (doesWalletExists()) {
       try {
-        // connect to user's MetaMask account, pop-up UI that
+        // connect to MetaMask account. pop-up UI that
         // asks the user’s permission to connect the dApp to MetaMask
         const res = await window.ethereum.request({
           method: "eth_requestAccounts",
@@ -63,7 +63,7 @@ const App = () => {
 
     // compare amount with balance
     if (amount.gt(balanceBN)) {
-      alert("You don't have enough ETH in your wallet to send");
+      alert("You don't have enough fund in your wallet to send");
     } else {
       const contractTransfer = new window.web3.eth.Contract(
         MIN_ABI_TRANSFER,

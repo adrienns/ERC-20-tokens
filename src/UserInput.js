@@ -13,7 +13,6 @@ const UserInput = ({ handleSubmit, setTransactionModal }) => {
   // );
 
   const [decimalsInput, setDecimalsInput] = useState("");
-  //decimals 18
   const [amountInput, setAmountInput] = useState("");
 
   const closeTansactionModal = () => {
